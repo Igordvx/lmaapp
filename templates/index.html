@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel Principal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-5">
+  <div class="container">
+    <h1 class="mb-4">Panel de Gestión de datos</h1>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Cabildo</h5>
+            <p class="card-text">Gestiona la base de datos de los miembros del cabildo.</p>
+            <a href="/cabildo" class="btn btn-primary">Entrar</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aquí puedes agregar más tarjetas -->
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">📆 Eventos / Reuniones</h5>
+            <p class="card-text">(Futura sección) Agenda y seguimiento de reuniones.</p>
+            <a href="#" class="btn btn-secondary disabled">Próximamente</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100">
+          <div class="card-body">
+            <h5 class="card-title">📥 Importar Integrantes</h5>
+            <p class="card-text">Sube un archivo CSV y agrega múltiples registros a la base de datos.</p>
+            <a href="/importar" class="btn btn-outline-primary">Ir a importar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

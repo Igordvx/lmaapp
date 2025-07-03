@@ -7,7 +7,7 @@ import os
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-app.secret_key = 'clave_secreta_para_flask'
+app.secret_key = os.getenv('SECRET_KEY', 'clave_predeterminada')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -29,8 +29,29 @@ class Integrante(db.Model):
 def index():    
     return render_template('index.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        usuario = request.form['usuario']
+        clave = request.form['clave']
+        if usuario == 'admin' and clave == '1234':
+            session['usuario'] = usuario
+            return redirect(url_for('ver_integrantes'))
+        else:
+            flash('Usuario o contraseña incorrecta', 'danger')
+    return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('usuario', None)
+    flash('Sesión cerrada', 'info')
+    return redirect(url_for('login'))
+
+
 @app.route('/cabildo')
 def ver_integrantes():
+    if 'usuario' not in session:
+    return redirect(url_for('login'))
     consulta = request.args.get('buscar')
     orden = request.args.get('orden', 'familia') 
     columnas_validas = {

@@ -48,7 +48,7 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('integrantes')
+@app.route('ver_integrantes')
 def ver_integrantes():
     if 'usuario' not in session:
     return redirect(url_for('login'))
